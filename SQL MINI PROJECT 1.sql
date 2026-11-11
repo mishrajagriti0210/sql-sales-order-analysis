@@ -1,4 +1,5 @@
- CREATE DATABASE BA_Sales_Project;
+CREATE DATABASE IF NOT EXISTS BA_Sales_Project;
+USE BA_Sales_Project;
  
  CREATE TABLE Customers (
  CustomerID INT PRIMARY KEY,
@@ -160,6 +161,10 @@ FROM ORDERS;
 SELECT SUM(Quantity) AS TotalQuantitySold 
 FROM Order_Details;
 
+-- NOTE: The following overall revenue, cost, and profit calculations include
+-- all order statuses (Completed, Pending, and Cancelled).
+-- Use the completed-order queries below when reporting realized sales.
+
 SELECT SUM(Quantity*UnitPrice) AS TotalRevenue
 FROM Order_Details;
 
@@ -177,6 +182,26 @@ FROM Products;
 
 SELECT MIN(Price) AS MinimumPrice
 FROM Products;
+
+-- COMPLETED-ORDER FINANCIAL PERFORMANCE --
+
+SELECT
+    SUM(od.Quantity * od.UnitPrice) AS CompletedRevenue,
+    SUM(od.Quantity * od.CostPerUnit) AS CompletedCost,
+    SUM(od.Quantity * (od.UnitPrice - od.CostPerUnit)) AS CompletedProfit
+FROM Orders o
+JOIN Order_Details od ON o.OrderID = od.OrderID
+WHERE o.Status = 'Completed';
+
+SELECT
+    c.Region,
+    SUM(od.Quantity * od.UnitPrice) AS CompletedRevenue
+FROM Customers c
+JOIN Orders o ON c.CustomerID = o.CustomerID
+JOIN Order_Details od ON o.OrderID = od.OrderID
+WHERE o.Status = 'Completed'
+GROUP BY c.Region
+ORDER BY CompletedRevenue DESC;
 
 -- GROUP BY --
 
@@ -276,7 +301,7 @@ LIMIT 1;
 SELECT ProductName, Price,
 	   CASE
            WHEN Price >= 50000 THEN 'Premium'
-           WHEN Price >= 20000 THEN 'Standrd'
+           WHEN Price >= 20000 THEN 'Standard'
            ELSE 'Budget'
 	   END AS PriceCategory
 FROM Products;
