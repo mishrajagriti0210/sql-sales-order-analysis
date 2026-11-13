@@ -25,7 +25,7 @@ The project uses four related tables:
 - Window functions
 
 ## Business Questions
-The analysis explores customer, product, and order-level performance using joins, aggregations, conditional logic, and analytical SQL patterns.
+The analysis explores customer, product, and order-level performance using joins, aggregations, conditional logic, and analytical SQL patterns. It also includes a completed-orders revenue, cost, and profit analysis.
 
 ## Key Learning Outcomes
 - Working with related tables in a relational database.
@@ -34,11 +34,25 @@ The analysis explores customer, product, and order-level performance using joins
 - Explaining query findings in business terms.
 
 ## Repository Contents
-- SQL analysis script (to be added)
-- Supporting screenshots or query outputs (to be added)
+- [SQL Mini Project 1](SQL%20MINI%20PROJECT%201.sql) — complete SQL script
+- `screenshots/` — screenshots of SQL queries and their outputs
+
+## Project Screenshots
+
+![SQL Project Screenshot 1](screenshots/%7B4569795D-F644-462A-B457-2A1569E3E310%7D.png)
+
+![SQL Project Screenshot 2](screenshots/%7B5CAF5A2B-A1A6-4DCC-9E05-C866DE4B5593%7D.png)
+
+![SQL Project Screenshot 3](screenshots/%7BA791007F-1D32-44DE-856A-BBAA99528D7A%7D.png)
+
+![SQL Project Screenshot 4](screenshots/%7BA8228CDE-B5EB-407B-9E26-8C4C9A95E7B8%7D.png)
+
+![SQL Project Screenshot 5](screenshots/%7BB5C19668-CE28-4AFC-A5D1-001F0838BE81%7D.png)
+
+![SQL Project Screenshot 6](screenshots/%7BEF265D56-409D-4D86-9030-03180647D503%7D.png)
 
 ## How to Use
-Run the SQL script in a compatible SQL environment after creating or importing the project tables and data. Add the dataset/schema files to this repository alongside the script when available.
+Open the SQL script in MySQL Workbench or another compatible MySQL environment. Run the database and table creation statements when setting up the project for the first time, then execute the analysis queries. If the database and tables already exist, avoid rerunning the creation statements unless they have been made safe for repeated execution.
 
 ## Author
 **Jagriti Mishra**  
